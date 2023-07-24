@@ -2,7 +2,7 @@ import CardsContainer from "../../components/CardsContainer/CardsContainer"
 import { useEffect } from "react";
 import { useDispatch } from "react-redux";
 import {getCountries} from "../../redux/actions"
-import SearchBar from "../../components/SearchBar/SearchBar"
+//import SearchBar from "../../components/SearchBar/SearchBar"
 const Home =()=> {
     const dispatch = useDispatch
     useEffect(() => {
@@ -15,7 +15,6 @@ return (
     <div> 
         <SearchBar/>
     <div>
-          
     <CardsContainer   />
     </div>
  </div>  
