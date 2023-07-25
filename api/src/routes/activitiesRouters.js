@@ -1,8 +1,13 @@
-//const {Router}= require ('express');
-//const actityRouter=Router();
-//const postActivities= require('../controllers/postActivities'); 
-//const getActivities= require('../controllers/getActivities'); 
+const {Router}= require ('express');
 
-//actityRouter.post("/",postActivities )
-//actityRouter.get("/",getActivities )
-//module.exports=actityRouter
+const {  createActivityHandler, getActivitiesHandler   }= require("../handlers/activitiesHandler")
+
+const actityRouter=Router();
+
+
+actityRouter.post("/activities", createActivityHandler )
+actityRouter.get("/activities",getActivitiesHandler )
+
+
+module.exports=actityRouter
+

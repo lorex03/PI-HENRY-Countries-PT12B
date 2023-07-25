@@ -1,4 +1,14 @@
-.container{
-    border:1px solid black
+.cards{
+    width:85vw;
+    margin: 0 auto;
+    display:grid;
+    grid-template-columns:1fr 1fr 1fr 1fr;
+    grid-gap:20px;   
+    font-size: medium;
+   width: 10px;
+height: 10px;
+    }
     
-}
+    
+ 
+    

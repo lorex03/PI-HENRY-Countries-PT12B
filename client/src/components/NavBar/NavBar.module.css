@@ -1,7 +1,9 @@
-.mainContainer{
-    display: flex;
-    flex-direction: row;
-    justify-content: space-around;
-border-radius: 20px;
-border:1px solid black
-}
+.stynav{
+
+  border: none;
+  padding:10px;
+  width:150px;
+  line-height:30px;
+  margin-bottom:30px;
+  }
+  

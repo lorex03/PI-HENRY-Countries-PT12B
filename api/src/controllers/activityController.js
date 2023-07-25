@@ -16,8 +16,19 @@ const createActivity = async (name, difficulty, duration, season, countries) => 
   return activity;
 };
 
+const getActivities =async  () => {
+    const ActivityandCountry= await Country.findAll();
+   
+   console.log(ActivityandCountry)
+     
+   return ActivityandCountry;
+   }
+
+
+
 module.exports = {
   createActivity,
+  getActivities
 };
 
 
@@ -39,10 +50,7 @@ module.exports = {
 //DONDE CADA OBJETO ES UNA ACTIVIDAD TURISTICA 
 //FUNCION:
 
-module.exports={
-  postcreateActivity  ,
-  getActivities,
-}
+
 //CREAR UN HANDLER QUE NO INTERACTUE CON EL MODELO Y QUE LLAME LA FUNCION DEL CONTROLLER 
 
 //Esta ruta recibirá todos los datos necesarios para crear una actividad turística y relacionarla con los países solicitados.

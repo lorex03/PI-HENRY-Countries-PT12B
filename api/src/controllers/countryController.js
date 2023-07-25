@@ -1,13 +1,16 @@
 const{Country,Activity}= require('../db')
 const {Op} = require ('sequelize')
 
-const getCountries = async () => {
- const countries= await Country.findAll();
+const getCountries= async() => { 
+  const  databaseCountries = await Country.findAll();
+return databaseCountries ;
+ }
+const searchCountryByName = async (name) => { 
+  const databaseCountries=
+   await Country.findAll({where:{name:name }});
+return databaseCountries ;
+}  
 
-console.log(countries)
-  
-return countries;
-}
 
   const getCountryDetail = async (id) => {
     //const { id } = req.params;
@@ -22,26 +25,34 @@ return country;
 
  
 
-const getCountriesByName=async(name)=> {
-   // const { name } = req.query;
-   const countriesName = await Country.findAll({
-        where: {
-          name: {
-            [Op.iLike]: `%${name}%`,
-          },
-        },
-      });
+ // async function getAllCount(req, res) {
+  //  const { name } = req.query;
+
+         
+        
+    
+  
+ 
+  
+  // const { name } = req.query;
+   //const countriesName = await Country.findAll({
+       // where: {
+        //  name: {
+          //  [Op.iLike]: `%${name}%`,
+      //    },
+     //   },
+    //  });
       //console.log(countriesName)
-      return countriesName;
-    }
+  //    return countriesName;
+ //   }
   
   
 
 //property 
 
 module.exports={
-    getCountries, 
+    getCountries, searchCountryByName,
     getCountryDetail,
-    getCountriesByName
+    
  
 }

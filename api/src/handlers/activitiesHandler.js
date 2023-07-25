@@ -1,5 +1,5 @@
 //Aca para dos controllers en el caso seria para post activities y get activities 
-const {createActivity}=require('../controllers/activityController')
+const {createActivity,getActivities}=require('../controllers/activityController')
 
 const createActivityHandler  = async(req,res)=> {
 const{ name, difficulty, duration,season,countries}= req.body;
@@ -12,8 +12,18 @@ res.status(201).json(newActivity)
 res.status(400).json({error:error.message})
 } }
 
-module.exports={
-  createActivityHandler
+
+const getActivitiesHandler= async(req,res) =>{
+
+  try {
+  const allActivities= await getActivities()
+
+  return res.status(200).json(allActivities)
+  
+} catch (error) {
+  return res.status(400).json({error:error.message})
+}
+
 }
 
 //const createActivityHandler = async (req, res) => {
@@ -27,3 +37,8 @@ module.exports={
    // res.status(500).json({ message: 'Internal server error' });
  // }
 //};
+
+module.exports={
+  createActivityHandler,
+  getActivitiesHandler
+}
