@@ -7,7 +7,7 @@ return databaseCountries ;
  }
 const searchCountryByName = async (name) => { 
   const databaseCountries=
-   await Country.findAll({where:{name:name }});
+   await Country.findAll({ where: { name: {   [Op.iLike]: `%${name}%` }} })
 return databaseCountries ;
 }  
 

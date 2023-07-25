@@ -11,7 +11,7 @@ backface-visibility:hidden;
 transform:translateZ(0);
 transition:transform 0.25s ease-out;
  width: 200px;
-    height: 320px;
+    height: 300px;
 }
 
 .cardcontainer:hover{

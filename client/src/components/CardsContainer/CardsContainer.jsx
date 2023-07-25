@@ -7,21 +7,62 @@ import { useSelector } from "react-redux";
    //Country es mi Card
 function CardsContainer({countries}){
   const countriesList=countries
+  const [currentPage, setCurrentPage] = useState(0);
+
+  let nextPage = () => {
+    if (countries.length <= currentPage + 10) {
+      setCurrentPage(currentPage);
+    } else setCurrentPage(currentPage + 10);
+  };
+  let prevPage = () => {
+    if (currentPage < 9) {
+      setCurrentPage(0);
+    } else {
+      setCurrentPage(currentPage - 10);
+    }
+  };
+
+  const firstPage = () => {
+    setCurrentPage(0);
+  };
+
+  const lastPage = () => {
+    setCurrentPage(countries.length - 10);
+    console.log(currentPage);
+  };
+
+  useEffect(() => {
+    firstPage()
+  }, [countries]);
+
+  
+ const filteredC = countries.slice(currentPage, currentPage + 10);
+
+
+
 
   return(
-<div className={style.cards}>
+    <div className={style.butn}>
+    <button onClick={firstPage} className={style.butn}>  {'<<'}  </button>
+    <button onClick={prevPage} className={style.butn}>  {'<'}   </button>
+    <button onClick={nextPage} className={style.butn}>  {'>'}   </button>
+    <button onClick={lastPage} className={style.butn}>  {'>>'}</button>
+    <div className={style.grid}>
 
-{countriesList?.map((country) =>(
+
+<div className={style.button}>
+
+{filteredC .map((country) =>(
   <Card country = {country} />
   
-)  )}
+))}
 
 </div>
-
+</div>
+</div>
 
   )
-
-}
+  }
 
 export default CardsContainer;
 

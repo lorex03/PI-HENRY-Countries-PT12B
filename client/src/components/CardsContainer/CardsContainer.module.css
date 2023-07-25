@@ -6,9 +6,52 @@
     grid-gap:20px;   
     font-size: medium;
    width: 10px;
-height: 10px;
+height: 15px;
     }
     
+    .button{
+        display: inline-block;
+        padding:0.35em 1.2em ;
+        border:0.1em solid #838383;
+        margin:1em 0.3em 0.3em 0;
+        border-radius:1em;
+        text-decoration:none;
+        font-family:'Roboto',sans-serif;
+        font-weight:300;
+        text-align:center;
+        transition: all 0.2s;
+        font-size: small;
+  
+        background-color: transparent;
+        text-align: center;
+     
+
+        }
+        
+        .button:hover{
+            color: #000000;
+            background-color:rgb(89, 132, 197);
+            }
+
     
- 
+
+ .grid{
+    display:grid;
+    flex-wrap: wrap;
+
+}
     
+.butn{
+    display:inline-block;
+text-align: center;
+flex-wrap: wrap;
+        text-decoration:none;
+        font-family:'Roboto',sans-serif;
+        font-weight:200;
+        text-align:center;
+        transition: all 0.2s;
+     font-size:x-large;
+        color: rgb(48, 39, 39);
+        
+
+}
