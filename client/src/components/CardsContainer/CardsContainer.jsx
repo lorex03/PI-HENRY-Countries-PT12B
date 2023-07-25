@@ -5,8 +5,8 @@ import { useSelector } from "react-redux";
 
 
    //Country es mi Card
-function CardsContainer({allCountries}){
-  const countriesList=allCountries
+function CardsContainer({countries}){
+  const countriesList=countries
 
   return(
 <div className={style.cards}>

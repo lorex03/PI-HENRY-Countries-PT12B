@@ -1,4 +1,3 @@
-
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import {getCountries} from "../../redux/actions"
@@ -8,7 +7,7 @@ import NavBar from "../../components/NavBar/NavBar";
 const Home =()=> {
    
     const dispatch = useDispatch() // es la forma que le opuede enviar al store
-const allCountries= useSelector((state)=> state.allCountries)
+const countries= useSelector((state)=> state.countries)
 
     useEffect(() => {
         dispatch(getCountries())
@@ -24,7 +23,7 @@ return (
         <h1> HOME</h1>
         <NavBar/>
     
-    <CardsContainer allCountries={allCountries}   />
+    <CardsContainer countries={countries}   />
     </div>
    
 )

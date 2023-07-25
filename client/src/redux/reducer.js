@@ -4,7 +4,7 @@ import {
 
   
 let initialState = {
-    allCountries: [ ],
+  countries: [ ],
   };
   
   const rootReducer = (state = initialState, action) => {
@@ -12,7 +12,7 @@ let initialState = {
       case GET_COUNTRIES: {
         return {
           ...state,
-          allCountries: action.payload,
+          countries: action.payload,
         };
       }
   
