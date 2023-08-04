@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
-import style from "../SearchBar/SearchBar.module.css"
-import { getCountries } from "../../redux/actions";
+
+import { getCountries, getName } from "../../redux/actions";
 
 const SearchBar = () => {
   const [input, setInput] = useState("");
@@ -11,15 +11,17 @@ const SearchBar = () => {
   const inputHandler = (e) => {
     setInput(e.target.value);
   };
+  const onClickHandler = () => {
+    dispatch(getName(input));
+  };
 
   const homeHandler = () => {
     dispatch(getCountries());
   };
 
   return (
-    <div className={style.inputsContainer}>
+    <div>
       <input
-        className={style.inputText}
         type="text"
         placeholder="Search by name"
         name="input"
@@ -27,10 +29,10 @@ const SearchBar = () => {
         onChange={(e) => inputHandler(e)}
       />
       <div>
-        <button className={style.srctBtn} onClick={() => onClickHandler()}>
+        <button  onClick={() => onClickHandler()}>
           Search
         </button>
-        <button className={style.srctBtn} onClick={() => homeHandler()}>
+        <button onClick={() => homeHandler()}>
           Reset
         </button>
       </div>
@@ -39,3 +41,4 @@ const SearchBar = () => {
 };
 
 export default SearchBar;
+

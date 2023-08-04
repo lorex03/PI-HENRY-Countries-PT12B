@@ -1,35 +1,46 @@
-const { Activity, Country } = require('../db');
+const { Country, Activity } = require("../db");
 
-const createActivity = async (name, difficulty, duration, season, countries) => {
-  const activity = await Activity.create({ name, difficulty, duration, season });
+async function newAct(req, res) {
+  const { name, difficulty, duration, season, countryID } = req.body;
 
-  if (countries && countries.length > 0) {
-    const countryInstances = await Country.findAll({
+  const valdidateact = await Activity.findOne({
+    where: {
+      name: name,
+    },
+  });
+
+  if (!valdidateact) {
+    const addAct = await Activity.create({
+      name: name,
+      difficulty: difficulty,
+      duration: duration,
+      season: season,
+    });
+    const countrymatch = await Country.findAll({
       where: {
-        name: countries,
+        id: countryID,
       },
     });
 
-    await activity.addCountries(countryInstances);
+    const resact = await addAct.addCountries(countrymatch);
+
+    return res.send(resact);
   }
 
-  return activity;
-};
+  const countrymatch = await Country.findAll({
+    where: {
+      id: countryID,
+    },
+  });
+  // console.log(addAct)
+  // console.log(countrymatch)
 
-const getActivities =async  () => {
-    const ActivityandCountry= await Country.findAll();
-   
-   console.log(ActivityandCountry)
-     
-   return ActivityandCountry;
-   }
+  const resact = await valdidateact.addCountries(countrymatch);
 
+  res.send(resact);
+}
 
-
-module.exports = {
-  createActivity,
-  getActivities
-};
+module.exports = { newAct };
 
 
 

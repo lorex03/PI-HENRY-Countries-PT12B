@@ -32,29 +32,13 @@ res.status(200).json(especificCount)
 //ESTE HANDLER SERA PARA OBTENER EL ID DEL PAIS , LLAMANDO A LA FUNCION DEL CONTROLLER, LA CUAL SERA
 //LA QUE INTERACTUARA CON EL MODELO, ESA FUNCION ES getCountryId
 
-const getCountrybyname = async (req,res) => {
-
-  try {
-    const  name  = req.query.name;
-    const nameCountry = await getCountriesByName(name);
-    
-    if (nameCountry.length === 0) {
-      return res.status(404).json({ error: 'No se encontraron países.' });
-    }
-    
-    return res.json(nameCountry);
-   
-  } catch (error) {
-    return res.status(400).json({error:error.message})
-  }
-}
 
 //luego para buscar todos aquellos paises que coinciden con el nombre recibido por query 
 
 module.exports={
   getCountriesHandler,
     getIdpaisHandler, 
-    getCountrybyname,
+    
 
 }
 //aqui pondre el handler para crear los handler en los casos de traer un objeto para traer todas las 

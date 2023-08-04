@@ -1,12 +1,10 @@
 import React, { useEffect, useState } from "react";
-import Card from "../Card/Card"
-import style from "../CardsContainer/CardsContainer.module.css"
+import Card from "../Card/Card";//Country es mi Card
 import { useSelector } from "react-redux";
+import style from "../CardsContainer/CardsContainer.module.css" 
 
-
-   //Country es mi Card
-function CardsContainer({countries}){
-  const countriesList=countries
+const CardsContainer = () => {
+  const countries = useSelector((state) => state.countries);
   const [currentPage, setCurrentPage] = useState(0);
 
   let nextPage = () => {
@@ -37,81 +35,29 @@ function CardsContainer({countries}){
 
   
  const filteredC = countries.slice(currentPage, currentPage + 10);
-
-
-
-
-  return(
-    <div className={style.butn}>
-    <button onClick={firstPage} className={style.butn}>  {'<<'}  </button>
-    <button onClick={prevPage} className={style.butn}>  {'<'}   </button>
-    <button onClick={nextPage} className={style.butn}>  {'>'}   </button>
-    <button onClick={lastPage} className={style.butn}>  {'>>'}</button>
-    <div className={style.grid}>
-
-
-<div className={style.button}>
-
-{filteredC .map((country) =>(
-  <Card country = {country} />
   
-))}
-
-</div>
-</div>
-</div>
-
-  )
+    return (
+      <div>
+        <button onClick={firstPage} className={style.butn}>  {'<<'}  </button>
+        <button onClick={prevPage} className={style.butn}>  {'<'}   </button>
+        <button onClick={nextPage} className={style.butn}>  {'>'}   </button>
+        <button onClick={lastPage} className={style.butn}>  {'>>'}</button>
+        <div className={style.grid}>
+          {
+          filteredC.map((e,id) => ( 
+            <Card //CardK
+            key={id}
+              flags={e.flags}
+              name={e.name}
+              continent={e.continent}// continent
+            />))}
+        </div>
+      </div>
+    );
   }
 
-export default CardsContainer;
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-  
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+ 
+export default CardsContainer;//CardsContainer
 
 
 // es el que estara observando el estado global RETORNANDO LAS PROPIEDADES DE MI CARD

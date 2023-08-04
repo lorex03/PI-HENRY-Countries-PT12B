@@ -1,31 +1,26 @@
-import { useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import {getCountries} from "../../redux/actions"
-import CardsContainer from "../../components/CardsContainer/CardsContainer"
-//import SearchBar from "../../components/SearchBar/SearchBar"
-import NavBar from "../../components/NavBar/NavBar";
-const Home =()=> {
-   
-    const dispatch = useDispatch() // es la forma que le opuede enviar al store
-const countries= useSelector((state)=> state.countries)
+import { Link } from "react-router-dom";
+import CardsContainer from "../../components/CardsContainer/CardsContainer";
+import React, { useEffect } from "react";
+import { getCountries } from "../../redux/actions";
+import { useDispatch } from "react-redux";
+import Nav from "../../components/NavBar/NavBar.jsx";
+export function Home () {
+  const dispatch = useDispatch();
 
-    useEffect(() => {
-        dispatch(getCountries())
-    },[dispatch]) // mando para que se ejecute solamente en el momento que hago el dispatch por eso el array de dependencias 
-//cuando se monta , que haga el dispatch 
-//useEffect () - useDispatch()
-// return {()=> 
-//cleardetail()
-//}) AVERIGUAR QUE ONDAAAA
+  useEffect(() => {
+    dispatch(getCountries());
+  }, [dispatch]);
 
-return (
-    <div> 
-        <h1> HOME</h1>
-        <NavBar/>
-    
-    <CardsContainer countries={countries}   />
+
+  return (
+    <div>
+      <Nav />
+      <div>
+        <CardsContainer />
+      </div>
     </div>
-   
-)
+  );
 }
-export default Home ;
+
+export default Home;
+

@@ -1,22 +1,24 @@
+import React from "react";
 import style from "../Card/Card.module.css"
-function Card({country}) {
-const {flags,name,continent}=country
+import { Link } from "react-router-dom";
+
+const Card = ({ flags, name, continent, id, activities }) => {
+    return (
+        <div className={style.cardcontainer} >
+        <Link  to={`/detail/${id}`}>
+        
+            <h2>{name}</h2>
+            <div  >
+              <img className={style.flags} src={flags} alt="no img"/>
+            </div>
+            <h3>Continent:{continent}</h3>
+            <h3>{activities}</h3>    
+        </Link>
+      </div>
+    );
+  };
 
 
-return (
-<div className={style.cardcontainer}>
-<img src={flags} />
-
-<h2> Name:{name} </h2>
-<h2> Continent: {continent} </h2>
-
-</div>
-
-
-)
-
-
-}
 
 export default Card;
 // este componente mostrara la informacion de cada pais 

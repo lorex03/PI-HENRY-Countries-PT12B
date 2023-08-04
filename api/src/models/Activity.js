@@ -9,10 +9,11 @@ module.exports = (sequelize) => {
       type: DataTypes.STRING,
       allowNull: false,
     },
-    id: {
+    id: { 
+       autoIncrement: true,
       type:DataTypes.INTEGER,
       primaryKey: true,
-        autoIncrement: true,
+      
        // type: DataTypes.UUID,
       },
 
@@ -21,7 +22,7 @@ module.exports = (sequelize) => {
         allowNull: false,
       },
       duration:{
-        type: DataTypes.TIME,
+        type: DataTypes.INTEGER,
         allowNull: false,
       },
       season:{

@@ -23,30 +23,7 @@ return country;
      
     }
 
- 
 
- // async function getAllCount(req, res) {
-  //  const { name } = req.query;
-
-         
-        
-    
-  
- 
-  
-  // const { name } = req.query;
-   //const countriesName = await Country.findAll({
-       // where: {
-        //  name: {
-          //  [Op.iLike]: `%${name}%`,
-      //    },
-     //   },
-    //  });
-      //console.log(countriesName)
-  //    return countriesName;
- //   }
-  
-  
 
 //property 
 

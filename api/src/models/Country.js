@@ -11,6 +11,7 @@ module.exports = (sequelize) => {
     },
     
     id: {
+    
      type: DataTypes.STRING,
      defaultValue: DataTypes.UUIDV4,
      //error de sequelize:la sintaxis de entrada no es válida para tipo uuid: «IND»
@@ -22,7 +23,7 @@ module.exports = (sequelize) => {
       type: DataTypes.STRING,
       allowNull: true,
     },
-    continent: {
+    region: {
       type: DataTypes.STRING,
       allowNull: true,
     },
