@@ -1,46 +1,101 @@
-const { Country, Activity } = require("../db");
+const { Activity } = require("../db");
 
-async function newAct(req, res) {
-  const { name, difficulty, duration, season, countryID } = req.body;
 
-  const valdidateact = await Activity.findOne({
-    where: {
-      name: name,
-    },
-  });
+const createActivity = async (req,res)=> {
+  try {
+const {name, difficulty, duration, season,countries } = req.body;
+    if(!name || !difficulty || !duration || !season || !countries ) throw new Error("Falta por llenar datos");
+    const newAct = await Activity.create({
+      name,
+      difficulty,
+      duration,
+      season,
+    })
+    newAct.addCountries(countries);
+    return res.status(200).json(newAct);
+} catch (error) {
+    return res.status(500).json({error: error.message});
+}
 
-  if (!valdidateact) {
-    const addAct = await Activity.create({
-      name: name,
-      difficulty: difficulty,
-      duration: duration,
-      season: season,
-    });
-    const countrymatch = await Country.findAll({
-      where: {
-        id: countryID,
-      },
-    });
 
-    const resact = await addAct.addCountries(countrymatch);
+}
 
-    return res.send(resact);
-  }
 
-  const countrymatch = await Country.findAll({
-    where: {
-      id: countryID,
-    },
-  });
+
+
+module.exports=createActivity
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//async function newAct(req, res) {
+//  const { name, difficulty, duration, season, countryID } = req.body;
+
+  //const valdidateact = await Activity.findOne({
+   // where: {
+    //  name: name,
+    //},
+  //});
+
+  //if (!valdidateact) {
+   // const addAct = await Activity.create({
+    //  name: name,
+     // difficulty: difficulty,
+     // duration: duration,
+     // season: season,
+    //});
+    //const countrymatch = await Country.findAll({
+     // where: {
+      //  id: countryID,
+     // },
+    //});
+
+    //const resact = await addAct.addCountries(countrymatch);
+
+   // return res.send(resact);
+ // }
+
+ // const countrymatch = await Country.findAll({
+  //  where: {
+   //   id: countryID,
+   // },
+  //});
   // console.log(addAct)
   // console.log(countrymatch)
 
-  const resact = await valdidateact.addCountries(countrymatch);
+//  const resact = await valdidateact.addCountries(countrymatch);
 
-  res.send(resact);
-}
+//  res.send(resact);
+//}
 
-module.exports = { newAct };
+//module.exports = { newAct };
 
 
 

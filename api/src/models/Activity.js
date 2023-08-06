@@ -9,13 +9,19 @@ module.exports = (sequelize) => {
       type: DataTypes.STRING,
       allowNull: false,
     },
-    id: { 
-       autoIncrement: true,
-      type:DataTypes.INTEGER,
+    id: {
+      type: DataTypes.UUID,
+      defaultValue: DataTypes.UUIDV4,
       primaryKey: true,
+    },
+  
+    //id: { 
+      // autoIncrement: true,
+      //type:DataTypes.INTEGER,
+      //primaryKey: true,
       
        // type: DataTypes.UUID,
-      },
+      //},
 
     difficulty:{
         type: DataTypes.ENUM("1", "2" , "3" , "4" , "5"),

@@ -1,11 +1,11 @@
 const {Router}= require ('express');
 
-const {  newAct}= require("../controllers/activityController")
+const createActivity = require("../controllers/activityController")
 
 const actityRouter=Router();
 
 
-actityRouter.post('/activities', newAct )  
+actityRouter.post('/activities',createActivity  )  
 
 
 
